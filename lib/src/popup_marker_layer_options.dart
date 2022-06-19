@@ -12,6 +12,7 @@ import 'popup_event.dart';
 class PopupMarkerLayerOptions extends MarkerLayerOptions {
   /// Used to construct the popup.
   final PopupBuilder popupBuilder;
+  final Function(Marker)? onTap;
 
   /// If a PopupController is provided it can be used to programmatically show
   /// and hide the popup.
@@ -76,6 +77,7 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
     required this.popupBuilder,
     this.popupSnap = PopupSnap.markerTop,
     this.popupAnimation,
+    this.onTap,
     this.markerCenterAnimation,
     this.popupController,
     MarkerTapBehavior? markerTapBehavior,

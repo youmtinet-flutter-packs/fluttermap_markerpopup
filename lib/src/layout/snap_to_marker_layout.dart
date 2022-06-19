@@ -4,19 +4,6 @@ import 'package:fluttermap_markerpopup/src/layout/popup_container_translate.dart
 
 import 'popup_layout.dart';
 
-/// The correct snapping is achieved whilst ensuring GestureDetectors inside the
-/// popup work and that the popup is always oriented horizontally by:
-///   - Translating the entire map container (full size)
-///   - Applying an appropriate Alignment to the popup inside that container
-///   - Un-rotating the popup so it is horizontal
-///
-/// For example PopupSnap.markerRight is achieved by:
-///   - Translating the whole container so its left middle edge is touching the
-///     marker's right edge.
-///   - Aligning the popup to the center-left inside the transformed container.
-///
-/// Note that when the map is rotated flutter_map increases the width and height
-/// of the map container such that it still contains the whole map view.
 abstract class SnapToMarkerLayout {
   static PopupLayout left(MapState mapState, Marker marker, bool markerRotate) {
     return PopupLayout(

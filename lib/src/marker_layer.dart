@@ -99,6 +99,9 @@ class _MarkerLayerState extends State<MarkerLayer> with SingleTickerProviderStat
                 widget.popupController,
               );
             },
+            onTap: () {
+              widget.layerOptions.onTap!(marker);
+            },
             child: marker.builder(context),
           );
 
