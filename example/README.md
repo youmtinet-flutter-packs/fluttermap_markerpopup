@@ -1,6 +1,6 @@
-# flutter_map_marker_popup_example
+# example
 
-Example for Flutter Map Marker Popups.
+A new Flutter project.
 
 ## Getting Started
 

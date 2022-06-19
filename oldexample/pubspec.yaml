@@ -1,0 +1,28 @@
+name: fluttermap_markerpopup_example
+description: Example for Flutter Map Marker Popups.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  latlong2: ^0.8.0
+  flutter_map: ^1.0.0
+  fluttermap_markerpopup:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: AccurateMapIcon
+      fonts:
+        - asset: fonts/AccurateMapIcon.ttf
