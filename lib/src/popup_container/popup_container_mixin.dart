@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
+import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 import 'package:fluttermap_markerpopup/src/layout/popup_layout.dart';
 import 'package:fluttermap_markerpopup/src/popup_container/marker_with_key.dart';
 import 'package:fluttermap_markerpopup/src/popup_snap.dart';
@@ -17,10 +18,10 @@ mixin PopupContainerMixin {
 
   bool get markerRotate;
 
-  Function(PopupEvent event, List<Marker> selectedMarkers)? get onPopupEvent;
+  Function(PopupEvent event, List<MarkerData> selectedMarkers)? get onPopupEvent;
 
   @nonVirtual
-  Widget inPosition(Marker marker, Widget popup) {
+  Widget inPosition(MarkerData marker, Widget popup) {
     final layout = popupLayout(marker);
 
     return Positioned.fill(
@@ -36,7 +37,7 @@ mixin PopupContainerMixin {
   }
 
   @nonVirtual
-  PopupLayout popupLayout(Marker marker) {
+  PopupLayout popupLayout(MarkerData marker) {
     return PopupLayout.calculate(
       mapState: mapState,
       marker: marker,
@@ -49,7 +50,7 @@ mixin PopupContainerMixin {
   /// it goes off screen or changes position in the widget tree.
   @nonVirtual
   Widget popupWithStateKeepAlive(
-      MarkerWithKey markerWithKey, Widget Function(BuildContext, Marker) popupBuilder) {
+      MarkerWithKey markerWithKey, Widget Function(BuildContext, MarkerData) popupBuilder) {
     return Builder(
       key: markerWithKey.key,
       builder: (context) => popupBuilder(
@@ -74,7 +75,7 @@ mixin PopupContainerMixin {
 
   @nonVirtual
   void wrapShowPopupsAlsoFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     required bool disableAnimation,
   }) {
     final markersWithKeys = markers.map((marker) => MarkerWithKey(marker)).toList();
@@ -85,7 +86,7 @@ mixin PopupContainerMixin {
 
   @nonVirtual
   void wrapShowPopupsOnlyFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     required bool disableAnimation,
   }) {
     final markersWithKeys = markers.map((marker) => MarkerWithKey(marker)).toList();
@@ -103,7 +104,7 @@ mixin PopupContainerMixin {
 
   @nonVirtual
   void wrapHidePopupsOnlyFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     required bool disableAnimation,
   }) {
     popupController.selectedMarkersWithKeys
@@ -112,7 +113,7 @@ mixin PopupContainerMixin {
   }
 
   @nonVirtual
-  void toggle(Marker marker, {bool disableAnimation = false}) {
+  void toggle(MarkerData marker, {bool disableAnimation = false}) {
     if (popupController.selectedMarkersWithKeys.contains(MarkerWithKey.wrap(marker))) {
       wrapHidePopupsOnlyFor([marker], disableAnimation: disableAnimation);
     } else {
@@ -132,5 +133,5 @@ mixin PopupContainerMixin {
 
   void hideAllPopups({required bool disableAnimation});
 
-  void hidePopupsOnlyFor(List<Marker> markers, {required bool disableAnimation});
+  void hidePopupsOnlyFor(List<MarkerData> markers, {required bool disableAnimation});
 }

@@ -1,3 +1,4 @@
+import 'package:fluttermap_markerpopup_example/example_popup_with_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
@@ -36,24 +37,24 @@ class SimpleMapWithPopups extends StatelessWidget {
         PopupMarkerLayerWidget(
           options: PopupMarkerLayerOptions(
             popupController: _popupLayerController,
-            markers: _markers,
+            markersData: _markers,
             markerRotateAlignment: PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
-            popupBuilder: (BuildContext context, Marker marker) => ExamplePopup(marker),
+            popupBuilder: (BuildContext context, MarkerData marker) => ExamplePopup(marker),
           ),
         ),
       ],
     );
   }
 
-  List<Marker> get _markers => _markerPositions
-      .map(
-        (markerPosition) => Marker(
-          point: markerPosition,
-          width: 40,
-          height: 40,
-          builder: (_) => const Icon(Icons.location_on, size: 40),
-          anchorPos: AnchorPos.align(AnchorAlign.top),
-        ),
-      )
+  List<MarkerData> get _markers => _markerPositions
+      .map((markerPosition) => DataMarker(
+            Marker(
+              point: markerPosition,
+              width: 40,
+              height: 40,
+              builder: (_) => const Icon(Icons.location_on, size: 40),
+              anchorPos: AnchorPos.align(AnchorAlign.top),
+            ),
+          ))
       .toList();
 }

@@ -3,6 +3,7 @@ import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
+import 'package:fluttermap_markerpopup/src/markerdata.dart';
 import 'package:fluttermap_markerpopup/src/popup_builder.dart';
 import 'package:fluttermap_markerpopup/src/popup_event.dart';
 import 'package:fluttermap_markerpopup/src/popup_snap.dart';
@@ -17,7 +18,7 @@ class SimplePopupContainer extends StatefulWidget {
   final PopupSnap snap;
   final MapState mapState;
   final bool markerRotate;
-  final Function(PopupEvent event, List<Marker> selectedMarkers)? onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
 
   const SimplePopupContainer({
     required this.mapState,
@@ -51,7 +52,8 @@ class _SimplePopupContainerState extends State<SimplePopupContainer> with PopupC
   bool get markerRotate => widget.markerRotate;
 
   @override
-  Function(PopupEvent event, List<Marker> selectedMarkers)? get onPopupEvent => widget.onPopupEvent;
+  Function(PopupEvent event, List<MarkerData> selectedMarkers)? get onPopupEvent =>
+      widget.onPopupEvent;
 
   @override
   void initState() {
@@ -125,7 +127,7 @@ class _SimplePopupContainerState extends State<SimplePopupContainer> with PopupC
   }
 
   @override
-  void hidePopupsOnlyFor(List<Marker> markers, {required bool disableAnimation}) {
+  void hidePopupsOnlyFor(List<MarkerData> markers, {required bool disableAnimation}) {
     setState(() {
       _selectedMarkersWithKeys.removeAll(markers.map(MarkerWithKey.wrap));
     });

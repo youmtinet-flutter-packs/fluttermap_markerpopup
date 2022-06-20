@@ -1,7 +1,8 @@
+import 'package:fluttermap_markerpopup_example/example_popup_with_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
-import 'package:example/accurate_map_icons.dart';
+import 'package:fluttermap_markerpopup_example/accurate_map_icons.dart';
 import 'package:latlong2/latlong.dart';
 
 import 'example_popup.dart';
@@ -27,7 +28,7 @@ class MapWithPopups extends StatefulWidget {
 }
 
 class _MapWithPopupsState extends State<MapWithPopups> {
-  late List<Marker> _markers;
+  late List<MarkerData> _markers;
 
   /// Used to trigger showing/hiding of popups.
   final PopupController _popupLayerController = PopupController();
@@ -54,8 +55,8 @@ class _MapWithPopupsState extends State<MapWithPopups> {
       /// anchor point change). If we can match one of the new Markers to the
       /// old Marker that had the popup then we can show the popup for that
       /// Marker.
-      final matchingMarkers = _markers.where((marker) =>
-          selectedMarkers.any((selectedMarker) => marker.point == selectedMarker.point));
+      final matchingMarkers = _markers.where((marker) => selectedMarkers
+          .any((MarkerData selectedMarker) => marker.marker.point == selectedMarker.marker.point));
 
       if (matchingMarkers.isNotEmpty) {
         _popupLayerController.showPopupsOnlyFor(matchingMarkers.toList(), disableAnimation: true);
@@ -67,8 +68,8 @@ class _MapWithPopupsState extends State<MapWithPopups> {
     /// If we change to show only one popup at a time we should hide all popups
     /// apart from the first one.
     if (!widget.showMultiplePopups && oldWidget.showMultiplePopups) {
-      final matchingMarkers = _markers.where((marker) =>
-          selectedMarkers.any((selectedMarker) => marker.point == selectedMarker.point));
+      final matchingMarkers = _markers.where((marker) => selectedMarkers
+          .any((selectedMarker) => marker.marker.point == selectedMarker.marker.point));
 
       if (matchingMarkers.length > 1) {
         _popupLayerController.showPopupsOnlyFor([matchingMarkers.first]);
@@ -76,7 +77,7 @@ class _MapWithPopupsState extends State<MapWithPopups> {
     }
   }
 
-  List<Marker> _buildMarkers() {
+  List<MarkerData> _buildMarkers() {
     return [
       Marker(
         point: LatLng(44.421, 10.404),
@@ -118,7 +119,7 @@ class _MapWithPopupsState extends State<MapWithPopups> {
         ),
         anchorPos: AnchorPos.align(widget.markerAnchorAlign),
       ),
-    ];
+    ].map((e) => DataMarker(e)).toList();
   }
 
   @override
@@ -140,10 +141,10 @@ class _MapWithPopupsState extends State<MapWithPopups> {
         PopupMarkerLayerWidget(
           options: PopupMarkerLayerOptions(
             markerCenterAnimation: const MarkerCenterAnimation(),
-            markers: _markers,
+            markersData: _markers,
             popupSnap: widget.snap,
             popupController: _popupLayerController,
-            popupBuilder: (BuildContext context, Marker marker) => ExamplePopup(marker),
+            popupBuilder: (BuildContext context, MarkerData marker) => ExamplePopup(marker),
             markerRotate: widget.rotate,
             markerRotateAlignment: PopupMarkerLayerOptions.rotationAlignmentFor(
               widget.markerAnchorAlign,

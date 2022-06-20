@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
+import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 import 'package:fluttermap_markerpopup/src/popup_snap.dart';
 
 import 'snap_to_map_layout.dart';
@@ -26,7 +27,7 @@ class PopupLayout {
 
   static PopupLayout calculate({
     required MapState mapState,
-    required Marker marker,
+    required MarkerData marker,
     required PopupSnap snap,
     required bool markerRotate,
   }) {

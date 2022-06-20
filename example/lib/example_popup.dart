@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 
 class ExamplePopup extends StatefulWidget {
-  final Marker marker;
+  final MarkerData marker;
 
   const ExamplePopup(this.marker, {Key? key}) : super(key: key);
 
@@ -11,11 +12,7 @@ class ExamplePopup extends StatefulWidget {
 }
 
 class _ExamplePopupState extends State<ExamplePopup> {
-  final List<IconData> _icons = [
-    Icons.star_border,
-    Icons.star_half,
-    Icons.star
-  ];
+  final List<IconData> _icons = [Icons.star_border, Icons.star_half, Icons.star];
   int _currentIcon = 0;
 
   @override
@@ -60,11 +57,11 @@ class _ExamplePopupState extends State<ExamplePopup> {
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
             Text(
-              'Position: ${widget.marker.point.latitude}, ${widget.marker.point.longitude}',
+              'Position: ${widget.marker.marker.point.latitude}, ${widget.marker.marker.point.longitude}',
               style: const TextStyle(fontSize: 12.0),
             ),
             Text(
-              'Marker size: ${widget.marker.width}, ${widget.marker.height}',
+              'Marker size: ${widget.marker.marker.width}, ${widget.marker.marker.height}',
               style: const TextStyle(fontSize: 12.0),
             ),
           ],

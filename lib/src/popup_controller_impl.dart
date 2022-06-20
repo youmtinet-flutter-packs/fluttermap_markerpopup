@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter_map/plugin_api.dart';
+import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 import 'package:fluttermap_markerpopup/src/popup_container/marker_with_key.dart';
 import 'package:fluttermap_markerpopup/src/popup_event.dart';
 
@@ -14,7 +15,7 @@ class PopupControllerImpl implements PopupController {
   /// one. This is for internal use.
   final Set<MarkerWithKey> selectedMarkersWithKeys;
 
-  PopupControllerImpl({List<Marker> initiallySelectedMarkers = const []})
+  PopupControllerImpl({List<MarkerData> initiallySelectedMarkers = const []})
       : selectedMarkersWithKeys = LinkedHashSet.from(
           initiallySelectedMarkers.map(
             (marker) => MarkerWithKey(marker),
@@ -22,12 +23,12 @@ class PopupControllerImpl implements PopupController {
         );
 
   @override
-  List<Marker> get selectedMarkers =>
+  List<MarkerData> get selectedMarkers =>
       selectedMarkersWithKeys.map((markerWithKey) => markerWithKey.marker).toList();
 
   @override
   void showPopupsAlsoFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     bool disableAnimation = false,
   }) {
     streamController?.add(PopupEvent.showAlsoFor(
@@ -38,7 +39,7 @@ class PopupControllerImpl implements PopupController {
 
   @override
   void showPopupsOnlyFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     bool disableAnimation = false,
   }) {
     streamController?.add(
@@ -55,7 +56,7 @@ class PopupControllerImpl implements PopupController {
 
   @override
   void hidePopupsOnlyFor(
-    List<Marker> markers, {
+    List<MarkerData> markers, {
     bool disableAnimation = false,
   }) {
     streamController?.add(
@@ -64,7 +65,7 @@ class PopupControllerImpl implements PopupController {
   }
 
   @override
-  void togglePopup(Marker marker, {bool disableAnimation = false}) {
+  void togglePopup(MarkerData marker, {bool disableAnimation = false}) {
     streamController?.add(PopupEvent.toggle(marker, disableAnimation: false));
   }
 }

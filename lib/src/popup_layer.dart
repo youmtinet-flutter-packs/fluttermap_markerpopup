@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:fluttermap_markerpopup/extension_api.dart';
+import 'package:fluttermap_markerpopup/src/markerdata.dart';
 
 import 'popup_controller_impl.dart';
 import 'popup_event.dart';
@@ -16,7 +17,7 @@ class PopupLayer extends StatefulWidget {
   final PopupControllerImpl popupController;
   final PopupAnimation? popupAnimation;
   final bool markerRotate;
-  final Function(PopupEvent event, List<Marker> selectedMarkers)? onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
 
   const PopupLayer({
     required this.mapState,

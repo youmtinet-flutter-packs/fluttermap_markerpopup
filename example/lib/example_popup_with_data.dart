@@ -24,6 +24,12 @@ class MapPage extends StatefulWidget {
   State<MapPage> createState() => _MapPageState();
 }
 
+class DataMarker extends MarkerData {
+  Marker mark;
+
+  DataMarker(this.mark) : super(marker: mark);
+}
+
 class _MapPageState extends State<MapPage> {
   final PopupController _popupLayerController = PopupController();
 
@@ -46,8 +52,8 @@ class _MapPageState extends State<MapPage> {
           ),
           PopupMarkerLayerWidget(
             options: PopupMarkerLayerOptions(
-              markers: <Marker>[
-                MonumentMarker(
+              markersData: <MarkerData>[
+                DataMarker(MonumentMarker(
                   monument: Monument(
                     name: 'Eiffel Tower',
                     imagePath:
@@ -55,19 +61,20 @@ class _MapPageState extends State<MapPage> {
                     lat: 48.857661,
                     long: 2.295135,
                   ),
-                ),
-                Marker(
+                )),
+                DataMarker(Marker(
                   anchorPos: AnchorPos.align(AnchorAlign.top),
                   point: LatLng(48.859661, 2.305135),
                   height: Monument.size,
                   width: Monument.size,
                   builder: (BuildContext ctx) => const Icon(Icons.shop),
-                ),
+                )),
               ],
               popupController: _popupLayerController,
-              popupBuilder: (_, Marker marker) {
-                if (marker is MonumentMarker) {
-                  return MonumentMarkerPopup(monument: marker.monument);
+              popupBuilder: (_, MarkerData marker) {
+                var marker2 = marker.marker;
+                if (marker2 is MonumentMarker) {
+                  return MonumentMarkerPopup(monument: marker2.monument);
                 }
                 return const Card(child: Text('Not a monument'));
               },

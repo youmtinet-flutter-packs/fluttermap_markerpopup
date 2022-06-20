@@ -68,17 +68,19 @@ class _MarkerLayerState extends State<MarkerLayer> with SingleTickerProviderStat
       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
         var markers = <Widget>[];
         final sameZoom = widget.map.zoom == lastZoom;
-        for (var i = 0; i < widget.layerOptions.markers.length; i++) {
-          var marker = widget.layerOptions.markers[i];
+        var layerOptions = widget.layerOptions;
+        var markers2 = layerOptions.markersData;
+        for (var i = 0; i < markers2.length; i++) {
+          var markerData = markers2[i];
 
           // Decide whether to use cached point or calculate it
-          var pxPoint = sameZoom ? _pxCache[i] : widget.map.project(marker.point);
+          var pxPoint = sameZoom ? _pxCache[i] : widget.map.project(markerData.marker.point);
           if (!sameZoom) {
             _pxCache[i] = pxPoint;
           }
 
-          final width = marker.width - marker.anchor.left;
-          final height = marker.height - marker.anchor.top;
+          final width = markerData.marker.width - markerData.marker.anchor.left;
+          final height = markerData.marker.height - markerData.marker.anchor.top;
           var sw = CustomPoint(pxPoint.x + width, pxPoint.y - height);
           var ne = CustomPoint(pxPoint.x - width, pxPoint.y + height);
 
@@ -90,28 +92,33 @@ class _MarkerLayerState extends State<MarkerLayer> with SingleTickerProviderStat
 
           final markerWithGestureDetector = GestureDetector(
             onLongPress: () {
-              if (!widget.popupController.selectedMarkers.contains(marker)) {
-                _centerMarker(marker);
+              var seleers2 = widget.popupController.selectedMarkers;
+              if (!seleers2.contains(markerData)) {
+                _centerMarker(markerData.marker);
               }
 
               widget.layerOptions.markerTapBehavior.apply(
-                marker,
+                markerData,
                 widget.popupController,
               );
             },
             onTap: () {
-              widget.layerOptions.onTap!(marker);
+              var onTap2 = widget.layerOptions.onTap;
+              if (onTap2 != null) {
+                onTap2(markerData);
+              }
             },
-            child: marker.builder(context),
+            child: markerData.marker.builder(context),
           );
 
           final markerRotate = widget.layerOptions.rotate;
 
           Widget markerWidget;
-          if (marker.rotate ?? markerRotate ?? false) {
-            final markerRotateOrigin = marker.rotateOrigin ?? widget.layerOptions.rotateOrigin;
+          if (markerData.marker.rotate ?? markerRotate ?? false) {
+            final markerRotateOrigin =
+                markerData.marker.rotateOrigin ?? widget.layerOptions.rotateOrigin;
             final markerRotateAlignment =
-                marker.rotateAlignment ?? widget.layerOptions.rotateAlignment;
+                markerData.marker.rotateAlignment ?? widget.layerOptions.rotateAlignment;
 
             // Counter rotated marker to the map rotation
             markerWidget = Transform.rotate(
@@ -126,9 +133,9 @@ class _MarkerLayerState extends State<MarkerLayer> with SingleTickerProviderStat
 
           markers.add(
             Positioned(
-              key: marker.key,
-              width: marker.width,
-              height: marker.height,
+              key: markerData.marker.key,
+              width: markerData.marker.width,
+              height: markerData.marker.height,
               left: pos.x - width,
               top: pos.y - height,
               child: markerWidget,

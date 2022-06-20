@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:fluttermap_markerpopup/src/markerdata.dart';
+
 import '../animated_stack_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
@@ -19,7 +21,7 @@ class AnimatedPopupContainer extends StatefulWidget {
   final MapState mapState;
   final PopupAnimation popupAnimation;
   final bool markerRotate;
-  final Function(PopupEvent event, List<Marker> selectedMarkers)? onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
 
   const AnimatedPopupContainer({
     required this.mapState,
@@ -50,7 +52,8 @@ class _AnimatedPopupContainerState extends State<AnimatedPopupContainer> with Po
   bool get markerRotate => widget.markerRotate;
 
   @override
-  Function(PopupEvent event, List<Marker> selectedMarkers)? get onPopupEvent => widget.onPopupEvent;
+  Function(PopupEvent event, List<MarkerData> selectedMarkers)? get onPopupEvent =>
+      widget.onPopupEvent;
 
   final GlobalKey<AnimatedStackState> _animatedStackKey = GlobalKey<AnimatedStackState>();
 
@@ -165,10 +168,11 @@ class _AnimatedPopupContainerState extends State<AnimatedPopupContainer> with Po
 
   @override
   void hidePopupsOnlyFor(
-    List<Marker> markers, {
+    List<MarkerData> markersData, {
     required bool disableAnimation,
   }) {
-    _animatedStackManager.removeWhere((markerWithKey) => markers.contains(markerWithKey.marker));
+    _animatedStackManager
+        .removeWhere((markerWithKey) => markersData.contains(markerWithKey.marker));
   }
 
   @override
