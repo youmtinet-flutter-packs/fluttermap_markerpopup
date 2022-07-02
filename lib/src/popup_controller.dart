@@ -1,4 +1,3 @@
-import 'package:flutter_map/plugin_api.dart';
 import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 import 'package:fluttermap_markerpopup/src/popup_controller_impl.dart';
 

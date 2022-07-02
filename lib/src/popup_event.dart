@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_map/plugin_api.dart';
 import 'package:fluttermap_markerpopup/src/markerdata.dart';
 
 @immutable

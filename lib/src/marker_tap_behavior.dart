@@ -1,5 +1,3 @@
-import 'package:flutter_map/plugin_api.dart';
-
 import '../fluttermap_markerpopup.dart';
 
 /// Controls what happens when a MarkerData is tapped.

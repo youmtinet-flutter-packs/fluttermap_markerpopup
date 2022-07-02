@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
 
 class ExamplePopup extends StatefulWidget {

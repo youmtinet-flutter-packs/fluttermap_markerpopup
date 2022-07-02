@@ -180,10 +180,11 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
   int _indexToItemIndex(int index) {
     int itemIndex = index;
     for (final _ActiveItem item in _outgoingItems) {
-      if (item.itemIndex <= itemIndex)
+      if (item.itemIndex <= itemIndex) {
         itemIndex += 1;
-      else
+      } else {
         break;
+      }
     }
     return itemIndex;
   }
@@ -192,10 +193,11 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
     int index = itemIndex;
     for (final _ActiveItem item in _outgoingItems) {
       assert(item.itemIndex != itemIndex);
-      if (item.itemIndex < itemIndex)
+      if (item.itemIndex < itemIndex) {
         index -= 1;
-      else
+      } else {
         break;
+      }
     }
     return index;
   }
