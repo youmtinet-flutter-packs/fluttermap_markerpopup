@@ -1,5 +1,5 @@
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
+import 'package:longpress_popup/src/markerdata.dart';
 
 import 'oval_bounds.dart';
 

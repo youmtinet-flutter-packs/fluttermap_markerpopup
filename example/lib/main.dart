@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermap_markerpopup_example/popup_option_controls.dart';
+import 'package:longpress_popup_example/popup_option_controls.dart';
 
 void main() => runApp(const MyApp());
 

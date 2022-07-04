@@ -1,4 +1,4 @@
-library fluttermap_markerpopup.extension_api;
+library longpress_popup.extension_api;
 
 export 'src/popup_animation.dart';
 export 'src/popup_builder.dart';

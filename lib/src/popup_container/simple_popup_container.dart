@@ -3,10 +3,10 @@ import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
-import 'package:fluttermap_markerpopup/src/popup_builder.dart';
-import 'package:fluttermap_markerpopup/src/popup_event.dart';
-import 'package:fluttermap_markerpopup/src/popup_snap.dart';
+import 'package:longpress_popup/src/markerdata.dart';
+import 'package:longpress_popup/src/popup_builder.dart';
+import 'package:longpress_popup/src/popup_event.dart';
+import 'package:longpress_popup/src/popup_snap.dart';
 
 import '../popup_controller_impl.dart';
 import 'marker_with_key.dart';

@@ -81,13 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  fluttermap_markerpopup:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "1.5.0"
   http:
     dependency: transitive
     description:
@@ -130,6 +123,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  longpress_popup:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "1.5.0"
   matcher:
     dependency: transitive
     description:

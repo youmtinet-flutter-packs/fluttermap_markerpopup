@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
-import 'package:fluttermap_markerpopup/src/popup_container/marker_with_key.dart';
-import 'package:fluttermap_markerpopup/src/popup_event.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/src/popup_container/marker_with_key.dart';
+import 'package:longpress_popup/src/popup_event.dart';
 
 class PopupControllerImpl implements PopupController {
   StreamController<PopupEvent>? streamController;

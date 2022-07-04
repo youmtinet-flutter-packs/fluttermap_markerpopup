@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
 
 import 'map_with_popups.dart';
 

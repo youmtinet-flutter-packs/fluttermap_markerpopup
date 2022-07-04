@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
 import 'package:latlong2/latlong.dart';
 
 void main() => runApp(const MyApp());

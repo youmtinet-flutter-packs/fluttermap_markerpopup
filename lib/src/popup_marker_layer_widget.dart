@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart' as flutter_map;
-import 'package:fluttermap_markerpopup/src/popup_layer.dart';
+import 'package:longpress_popup/src/popup_layer.dart';
 
-import '../fluttermap_markerpopup.dart';
+import '../longpress_popup.dart';
 import 'marker_layer.dart';
 import 'popup_controller_impl.dart';
 

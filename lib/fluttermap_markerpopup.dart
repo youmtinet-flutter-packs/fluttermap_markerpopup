@@ -1,4 +1,4 @@
-library fluttermap_markerpopup;
+library longpress_popup;
 
 export 'src/marker_center_animation.dart';
 export 'src/marker_tap_behavior.dart';

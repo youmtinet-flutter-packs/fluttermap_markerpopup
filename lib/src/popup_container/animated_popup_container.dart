@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
+import 'package:longpress_popup/src/markerdata.dart';
 
 import '../animated_stack_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/src/popup_animation.dart';
-import 'package:fluttermap_markerpopup/src/popup_builder.dart';
-import 'package:fluttermap_markerpopup/src/popup_container/popup_container_mixin.dart';
-import 'package:fluttermap_markerpopup/src/popup_event.dart';
-import 'package:fluttermap_markerpopup/src/popup_snap.dart';
+import 'package:longpress_popup/src/popup_animation.dart';
+import 'package:longpress_popup/src/popup_builder.dart';
+import 'package:longpress_popup/src/popup_container/popup_container_mixin.dart';
+import 'package:longpress_popup/src/popup_event.dart';
+import 'package:longpress_popup/src/popup_snap.dart';
 
 import '../popup_controller_impl.dart';
 import 'marker_with_key.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
+import 'package:longpress_popup/src/markerdata.dart';
 
 @immutable
 abstract class PopupEvent {

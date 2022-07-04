@@ -1,5 +1,5 @@
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
-import 'package:fluttermap_markerpopup/src/popup_controller_impl.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/src/popup_controller_impl.dart';
 
 /// Used to programmatically show/hide popups and find out which markers
 /// have visible popups.

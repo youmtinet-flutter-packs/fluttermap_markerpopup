@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:fluttermap_markerpopup/src/animated_stack.dart';
+import 'package:longpress_popup/src/animated_stack.dart';
 
 /// Manages the children of an [AnimatedStack].
 ///

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
-import 'package:fluttermap_markerpopup/src/layout/popup_layout.dart';
-import 'package:fluttermap_markerpopup/src/popup_container/marker_with_key.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/src/layout/popup_layout.dart';
+import 'package:longpress_popup/src/popup_container/marker_with_key.dart';
 
 import '../popup_controller_impl.dart';
 import '../popup_event.dart';

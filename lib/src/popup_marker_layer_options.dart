@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/src/marker_tap_behavior.dart';
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
-import 'package:fluttermap_markerpopup/src/popup_animation.dart';
-import 'package:fluttermap_markerpopup/src/popup_builder.dart';
-import 'package:fluttermap_markerpopup/src/popup_controller.dart';
-import 'package:fluttermap_markerpopup/src/popup_snap.dart';
+import 'package:longpress_popup/src/marker_tap_behavior.dart';
+import 'package:longpress_popup/src/markerdata.dart';
+import 'package:longpress_popup/src/popup_animation.dart';
+import 'package:longpress_popup/src/popup_builder.dart';
+import 'package:longpress_popup/src/popup_controller.dart';
+import 'package:longpress_popup/src/popup_snap.dart';
 
 import 'marker_center_animation.dart';
 import 'popup_event.dart';

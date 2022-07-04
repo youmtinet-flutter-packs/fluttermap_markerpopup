@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/fluttermap_markerpopup.dart';
+import 'package:longpress_popup/fluttermap_markerpopup.dart';
 
 import 'snap_to_map_layout.dart';
 import 'snap_to_marker_layout.dart';

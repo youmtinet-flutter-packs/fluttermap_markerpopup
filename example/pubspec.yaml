@@ -1,4 +1,4 @@
-name: fluttermap_markerpopup_example
+name: longpress_popup_example
 description: A new Flutter project.
 
 publish_to: 'none' 
@@ -18,7 +18,7 @@ dependencies:
   
   latlong2: ^0.8.0
   flutter_map: ^1.0.0
-  fluttermap_markerpopup:
+  longpress_popup:
     path: ../
 
 dev_dependencies:

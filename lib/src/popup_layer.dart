@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:fluttermap_markerpopup/extension_api.dart';
-import 'package:fluttermap_markerpopup/src/markerdata.dart';
+import 'package:longpress_popup/extension_api.dart';
+import 'package:longpress_popup/src/markerdata.dart';
 
 import 'popup_controller_impl.dart';
 import 'popup_event.dart';
