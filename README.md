@@ -12,13 +12,12 @@ For a minimal code example have a look at [SimpleMapWithPopups](https://github.c
 
 For a complete example which demonstrates all of the various options available try running the demo app in the `example/` directory which results in the following:
 
-![Example](https://github.com/ymrabti/fluttermap_markerpopup/blob/master/demo.gif)
+![Example](https://raw.githubusercontent.com/ymrabti/fluttermap_markerpopup/main/demo.gif)
 
 ## FAQ
 
 * Why is the popup not showing when I long press the marker?
 
-   Make sure you don't have a GestureDetector in your Marker's builder which is preventing this plugin from detecting the Marker long press.
+  Make sure you don't have a GestureDetector in your Marker's builder which is preventing this plugin from detecting the Marker long press.
 
-
-"# longpress_popup" 
+"# longpress_popup"
