@@ -1,6 +1,6 @@
 name: longpress_popup
 description: A plugin for flutter_map to show a customisable popup Widget when a marker is tapped. Also provides methods to show/hide popups.
-version: 1.5.0
+version: 1.5.1
 repository: https://github.com/ymrabti/longpress_popup
 
 environment:
