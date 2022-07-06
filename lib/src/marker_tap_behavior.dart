@@ -1,13 +1,13 @@
 import '../fluttermap_markerpopup.dart';
 
-/// Controls what happens when a MarkerData is tapped.
-class MarkerTapBehavior {
+/// Controls what happens when a MarkerData is longpressed.
+class MarkerLongPressBehavior {
   final Function(MarkerData marker, PopupController popupController)
       _onLongPress;
 
-  /// Toggle the popup of the tapped marker and hide all other popups. This is
+  /// Toggle the popup of the longpressed marker and hide all other popups. This is
   /// the recommended behavior if you only want to show one popup at a time.
-  MarkerTapBehavior.togglePopupAndHideRest()
+  MarkerLongPressBehavior.togglePopupAndHideRest()
       : _onLongPress = ((MarkerData marker, PopupController popupController) {
           if (popupController.selectedMarkers.contains(marker)) {
             popupController.hideAllPopups();
@@ -16,22 +16,22 @@ class MarkerTapBehavior {
           }
         });
 
-  /// Toggle the popup of the tapped marker and leave all other visible popups
+  /// Toggle the popup of the longpressed marker and leave all other visible popups
   /// as they are. This is the recommended behavior if you want to show multiple
   /// popups at once.
-  MarkerTapBehavior.togglePopup()
+  MarkerLongPressBehavior.togglePopup()
       : _onLongPress = ((MarkerData marker, PopupController popupController) {
           popupController.togglePopup(marker);
         });
 
-  /// Do nothing when tapping the marker. This is useful if you want to control
+  /// Do nothing when longpressing the marker. This is useful if you want to control
   /// popups exclusively with the [PopupController].
-  MarkerTapBehavior.none(
+  MarkerLongPressBehavior.none(
       Function(MarkerData marker, PopupController popupController) onLongPress)
       : _onLongPress = ((_, __) {});
 
-  /// Define your own custom behavior when tapping a marker.
-  MarkerTapBehavior.custom(
+  /// Define your own custom behavior when longpressing a marker.
+  MarkerLongPressBehavior.custom(
       Function(MarkerData marker, PopupController popupController) onLongPress)
       : _onLongPress = onLongPress;
 

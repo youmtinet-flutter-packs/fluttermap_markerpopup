@@ -30,7 +30,7 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
   /// a marker when it is tapped. Defaults to not centering on the marker.
   final MarkerCenterAnimation? markerCenterAnimation;
 
-  final MarkerTapBehavior markerTapBehavior;
+  final MarkerLongPressBehavior markerLongPressBehavior;
 
   final Function(PopupEvent event, List<MarkerData> selectedMarkers)?
       onPopupEvent;
@@ -39,7 +39,7 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
   PopupMarkerLayerOptions({
     required this.popupBuilder,
     AlignmentGeometry? markerRotateAlignment,
-    MarkerTapBehavior? markerTapBehavior,
+    MarkerLongPressBehavior? markerLongPressBehavior,
     Offset? markerRotateOrigin,
     bool? markerRotate = true,
     Stream<void>? rebuild,
@@ -50,8 +50,8 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
     this.popupAnimation,
     this.onPopupEvent,
     this.onTap,
-  })  : markerTapBehavior =
-            markerTapBehavior ?? MarkerTapBehavior.togglePopupAndHideRest(),
+  })  : markerLongPressBehavior = markerLongPressBehavior ??
+            MarkerLongPressBehavior.togglePopupAndHideRest(),
         super(
           markers: markersData.map((e) => e.marker).toList(),
           rotate: markerRotate,

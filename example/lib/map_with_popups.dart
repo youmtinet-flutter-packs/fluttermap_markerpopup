@@ -131,8 +131,7 @@ class _MapWithPopupsState extends State<MapWithPopups> {
       options: MapOptions(
         zoom: 5.0,
         center: LatLng(44.421, 10.404),
-        onTap: (_, __) => _popupLayerController
-            .hideAllPopups(), // Hide popup when the map is tapped.
+        onTap: (_, __) => _popupLayerController.hideAllPopups(),
       ),
       children: [
         TileLayerWidget(
@@ -157,9 +156,9 @@ class _MapWithPopupsState extends State<MapWithPopups> {
                 ? const PopupAnimation.fade(
                     duration: Duration(milliseconds: 700))
                 : null,
-            markerTapBehavior: widget.showMultiplePopups
-                ? MarkerTapBehavior.togglePopup()
-                : MarkerTapBehavior.togglePopupAndHideRest(),
+            markerLongPressBehavior: widget.showMultiplePopups
+                ? MarkerLongPressBehavior.togglePopup()
+                : MarkerLongPressBehavior.togglePopupAndHideRest(),
             onPopupEvent: (event, selectedMarkers) {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(

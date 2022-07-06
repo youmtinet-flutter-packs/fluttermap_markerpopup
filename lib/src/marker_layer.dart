@@ -102,7 +102,7 @@ class _MarkerLayerState extends State<MarkerLayer>
                 _centerMarker(markerData.marker);
               }
 
-              widget.layerOptions.markerTapBehavior.apply(
+              widget.layerOptions.markerLongPressBehavior.apply(
                 markerData,
                 widget.popupController,
               );
