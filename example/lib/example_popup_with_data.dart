@@ -116,7 +116,8 @@ class MonumentMarker extends Marker {
 }
 
 class MonumentMarkerPopup extends StatelessWidget {
-  const MonumentMarkerPopup({Key? key, required this.monument}) : super(key: key);
+  const MonumentMarkerPopup({Key? key, required this.monument})
+      : super(key: key);
   final Monument monument;
 
   @override

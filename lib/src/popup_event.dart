@@ -23,7 +23,8 @@ abstract class PopupEvent {
         disableAnimation: disableAnimation,
       );
 
-  factory PopupEvent.hideAll({required bool disableAnimation}) => HideAllPopupsEvent._(
+  factory PopupEvent.hideAll({required bool disableAnimation}) =>
+      HideAllPopupsEvent._(
         disableAnimation: disableAnimation,
       );
 
@@ -33,15 +34,23 @@ abstract class PopupEvent {
   }) =>
       HidePopupsOnlyFor._(markers, disableAnimation: disableAnimation);
 
-  factory PopupEvent.toggle(MarkerData marker, {required bool disableAnimation}) =>
+  factory PopupEvent.toggle(MarkerData marker,
+          {required bool disableAnimation}) =>
       TogglePopupEvent._(marker, disableAnimation: disableAnimation);
 
   void handle({
-    required void Function(List<MarkerData> markers, {required bool disableAnimation}) showAlsoFor,
-    required void Function(List<MarkerData> markers, {required bool disableAnimation}) showOnlyFor,
+    required void Function(List<MarkerData> markers,
+            {required bool disableAnimation})
+        showAlsoFor,
+    required void Function(List<MarkerData> markers,
+            {required bool disableAnimation})
+        showOnlyFor,
     required void Function({required bool disableAnimation}) hideAll,
-    required void Function(List<MarkerData> markers, {required bool disableAnimation}) hideOnlyFor,
-    required void Function(MarkerData marker, {required bool disableAnimation}) toggle,
+    required void Function(List<MarkerData> markers,
+            {required bool disableAnimation})
+        hideOnlyFor,
+    required void Function(MarkerData marker, {required bool disableAnimation})
+        toggle,
   }) {
     final thisEvent = this;
     if (thisEvent is ShowPopupsAlsoFor) {
@@ -112,5 +121,6 @@ class TogglePopupEvent extends PopupEvent {
   final MarkerData marker;
   final bool disableAnimation;
 
-  const TogglePopupEvent._(this.marker, {required this.disableAnimation}) : super._();
+  const TogglePopupEvent._(this.marker, {required this.disableAnimation})
+      : super._();
 }

@@ -17,7 +17,8 @@ class PopupLayer extends StatefulWidget {
   final PopupControllerImpl popupController;
   final PopupAnimation? popupAnimation;
   final bool markerRotate;
-  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)?
+      onPopupEvent;
 
   const PopupLayer({
     required this.mapState,
@@ -41,13 +42,15 @@ class _PopupLayerState extends State<PopupLayer> {
   void initState() {
     super.initState();
 
-    widget.popupController.streamController = StreamController<PopupEvent>.broadcast();
+    widget.popupController.streamController =
+        StreamController<PopupEvent>.broadcast();
   }
 
   @override
   void didUpdateWidget(covariant PopupLayer oldWidget) {
     if (oldWidget.popupController != widget.popupController) {
-      widget.popupController.streamController = StreamController<PopupEvent>.broadcast();
+      widget.popupController.streamController =
+          StreamController<PopupEvent>.broadcast();
     }
     super.didUpdateWidget(oldWidget);
   }

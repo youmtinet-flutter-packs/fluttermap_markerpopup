@@ -55,11 +55,13 @@ class _MapWithPopupsState extends State<MapWithPopups> {
       /// anchor point change). If we can match one of the new Markers to the
       /// old Marker that had the popup then we can show the popup for that
       /// Marker.
-      final matchingMarkers = _markers.where((marker) => selectedMarkers
-          .any((MarkerData selectedMarker) => marker.marker.point == selectedMarker.marker.point));
+      final matchingMarkers = _markers.where((marker) => selectedMarkers.any(
+          (MarkerData selectedMarker) =>
+              marker.marker.point == selectedMarker.marker.point));
 
       if (matchingMarkers.isNotEmpty) {
-        _popupLayerController.showPopupsOnlyFor(matchingMarkers.toList(), disableAnimation: true);
+        _popupLayerController.showPopupsOnlyFor(matchingMarkers.toList(),
+            disableAnimation: true);
       } else {
         _popupLayerController.hideAllPopups(disableAnimation: true);
       }
@@ -68,8 +70,9 @@ class _MapWithPopupsState extends State<MapWithPopups> {
     /// If we change to show only one popup at a time we should hide all popups
     /// apart from the first one.
     if (!widget.showMultiplePopups && oldWidget.showMultiplePopups) {
-      final matchingMarkers = _markers.where((marker) => selectedMarkers
-          .any((selectedMarker) => marker.marker.point == selectedMarker.marker.point));
+      final matchingMarkers = _markers.where((marker) => selectedMarkers.any(
+          (selectedMarker) =>
+              marker.marker.point == selectedMarker.marker.point));
 
       if (matchingMarkers.length > 1) {
         _popupLayerController.showPopupsOnlyFor([matchingMarkers.first]);
@@ -128,8 +131,8 @@ class _MapWithPopupsState extends State<MapWithPopups> {
       options: MapOptions(
         zoom: 5.0,
         center: LatLng(44.421, 10.404),
-        onTap: (_, __) =>
-            _popupLayerController.hideAllPopups(), // Hide popup when the map is tapped.
+        onTap: (_, __) => _popupLayerController
+            .hideAllPopups(), // Hide popup when the map is tapped.
       ),
       children: [
         TileLayerWidget(
@@ -144,13 +147,15 @@ class _MapWithPopupsState extends State<MapWithPopups> {
             markersData: _markers,
             popupSnap: widget.snap,
             popupController: _popupLayerController,
-            popupBuilder: (BuildContext context, MarkerData marker) => ExamplePopup(marker),
+            popupBuilder: (BuildContext context, MarkerData marker) =>
+                ExamplePopup(marker),
             markerRotate: widget.rotate,
             markerRotateAlignment: PopupMarkerLayerOptions.rotationAlignmentFor(
               widget.markerAnchorAlign,
             ),
             popupAnimation: widget.fade
-                ? const PopupAnimation.fade(duration: Duration(milliseconds: 700))
+                ? const PopupAnimation.fade(
+                    duration: Duration(milliseconds: 700))
                 : null,
             markerTapBehavior: widget.showMultiplePopups
                 ? MarkerTapBehavior.togglePopup()

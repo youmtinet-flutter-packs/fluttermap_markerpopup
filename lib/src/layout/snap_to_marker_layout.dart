@@ -6,7 +6,8 @@ import 'package:longpress_popup/src/markerdata.dart';
 import 'popup_layout.dart';
 
 abstract class SnapToMarkerLayout {
-  static PopupLayout left(MapState mapState, MarkerData markerData, bool markerRotate) {
+  static PopupLayout left(
+      MapState mapState, MarkerData markerData, bool markerRotate) {
     return PopupLayout(
       contentAlignment: Alignment.centerRight,
       rotationAlignment: Alignment.centerRight,
@@ -16,7 +17,8 @@ abstract class SnapToMarkerLayout {
     );
   }
 
-  static PopupLayout top(MapState mapState, MarkerData markerData, bool markerRotate) {
+  static PopupLayout top(
+      MapState mapState, MarkerData markerData, bool markerRotate) {
     return PopupLayout(
       contentAlignment: Alignment.bottomCenter,
       rotationAlignment: Alignment.bottomCenter,
@@ -26,7 +28,8 @@ abstract class SnapToMarkerLayout {
     );
   }
 
-  static PopupLayout right(MapState mapState, MarkerData markerData, bool markerRotate) {
+  static PopupLayout right(
+      MapState mapState, MarkerData markerData, bool markerRotate) {
     return PopupLayout(
       contentAlignment: Alignment.centerLeft,
       rotationAlignment: Alignment.centerLeft,
@@ -36,22 +39,26 @@ abstract class SnapToMarkerLayout {
     );
   }
 
-  static PopupLayout bottom(MapState mapState, MarkerData markerData, bool markerRotate) {
+  static PopupLayout bottom(
+      MapState mapState, MarkerData markerData, bool markerRotate) {
     return PopupLayout(
       contentAlignment: Alignment.topCenter,
       rotationAlignment: Alignment.topCenter,
       transformationMatrix: markerData.marker.rotate ?? markerRotate
-          ? PopupContainerTransform.toBottomOfRotatedMarker(mapState, markerData)
+          ? PopupContainerTransform.toBottomOfRotatedMarker(
+              mapState, markerData)
           : PopupContainerTransform.toBottomOfMarker(mapState, markerData),
     );
   }
 
-  static PopupLayout center(MapState mapState, MarkerData markerData, bool markerRotate) {
+  static PopupLayout center(
+      MapState mapState, MarkerData markerData, bool markerRotate) {
     return PopupLayout(
       contentAlignment: Alignment.center,
       rotationAlignment: Alignment.center,
       transformationMatrix: markerData.marker.rotate ?? markerRotate
-          ? PopupContainerTransform.toCenterOfRotatedMarker(mapState, markerData)
+          ? PopupContainerTransform.toCenterOfRotatedMarker(
+              mapState, markerData)
           : PopupContainerTransform.toCenterOfMarker(mapState, markerData),
     );
   }

@@ -20,8 +20,9 @@ class PopupControllerImpl implements PopupController {
         );
 
   @override
-  List<MarkerData> get selectedMarkers =>
-      selectedMarkersWithKeys.map((markerWithKey) => markerWithKey.marker).toList();
+  List<MarkerData> get selectedMarkers => selectedMarkersWithKeys
+      .map((markerWithKey) => markerWithKey.marker)
+      .toList();
 
   @override
   void showPopupsAlsoFor(

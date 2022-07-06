@@ -71,7 +71,10 @@ class _PopupOptionControlsState extends State<PopupOptionControls> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
-                        children: const [Icon(Icons.rotate_right), Text(' Rotate')],
+                        children: const [
+                          Icon(Icons.rotate_right),
+                          Text(' Rotate')
+                        ],
                       ),
                     ),
                     Padding(
@@ -93,8 +96,8 @@ class _PopupOptionControlsState extends State<PopupOptionControls> {
                       style: TextStyle(fontSize: 18),
                     ),
                     ToggleButtons(
-                      isSelected: List.generate(
-                          alignments.length, (index) => popupAlignment == alignments[index]),
+                      isSelected: List.generate(alignments.length,
+                          (index) => popupAlignment == alignments[index]),
                       onPressed: (int index) {
                         setState(() {
                           popupAlignment = alignments[index];
@@ -125,8 +128,8 @@ class _PopupOptionControlsState extends State<PopupOptionControls> {
                       style: TextStyle(fontSize: 18),
                     ),
                     ToggleButtons(
-                      isSelected: List.generate(
-                          alignments.length, (index) => anchorAlignment == alignments[index]),
+                      isSelected: List.generate(alignments.length,
+                          (index) => anchorAlignment == alignments[index]),
                       onPressed: (int index) {
                         setState(() {
                           anchorAlignment = alignments[index];

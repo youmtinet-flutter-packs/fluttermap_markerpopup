@@ -32,7 +32,8 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
 
   final MarkerTapBehavior markerTapBehavior;
 
-  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)?
+      onPopupEvent;
 
   List<MarkerData> markersData = const [];
   PopupMarkerLayerOptions({
@@ -49,7 +50,8 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
     this.popupAnimation,
     this.onPopupEvent,
     this.onTap,
-  })  : markerTapBehavior = markerTapBehavior ?? MarkerTapBehavior.togglePopupAndHideRest(),
+  })  : markerTapBehavior =
+            markerTapBehavior ?? MarkerTapBehavior.togglePopupAndHideRest(),
         super(
           markers: markersData.map((e) => e.marker).toList(),
           rotate: markerRotate,

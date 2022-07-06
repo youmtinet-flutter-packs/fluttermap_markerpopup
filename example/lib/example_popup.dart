@@ -11,7 +11,11 @@ class ExamplePopup extends StatefulWidget {
 }
 
 class _ExamplePopupState extends State<ExamplePopup> {
-  final List<IconData> _icons = [Icons.star_border, Icons.star_half, Icons.star];
+  final List<IconData> _icons = [
+    Icons.star_border,
+    Icons.star_half,
+    Icons.star
+  ];
   int _currentIcon = 0;
 
   @override

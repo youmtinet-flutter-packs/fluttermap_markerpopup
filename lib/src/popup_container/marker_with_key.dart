@@ -14,7 +14,8 @@ class MarkerWithKey {
   static MarkerData unwrap(MarkerWithKey markerWithKey) => markerWithKey.marker;
 
   @override
-  bool operator ==(Object other) => other is MarkerWithKey && marker == other.marker;
+  bool operator ==(Object other) =>
+      other is MarkerWithKey && marker == other.marker;
 
   @override
   int get hashCode => marker.hashCode;

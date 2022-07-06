@@ -18,9 +18,11 @@ const Duration _kDuration = Duration(milliseconds: 300);
 
 // Incoming and outgoing AnimatedStack items.
 class _ActiveItem implements Comparable<_ActiveItem> {
-  _ActiveItem.incoming(this.controller, this.itemIndex) : removedItemBuilder = null;
+  _ActiveItem.incoming(this.controller, this.itemIndex)
+      : removedItemBuilder = null;
 
-  _ActiveItem.outgoing(this.controller, this.itemIndex, this.removedItemBuilder);
+  _ActiveItem.outgoing(
+      this.controller, this.itemIndex, this.removedItemBuilder);
 
   _ActiveItem.index(this.itemIndex)
       : controller = null,
@@ -78,7 +80,8 @@ class AnimatedStack extends StatefulWidget {
   ///  * [maybeOf], a similar function that will return null if no
   ///    [AnimatedStack] ancestor is found.
   static AnimatedStackState of(BuildContext context) {
-    final AnimatedStackState? result = context.findAncestorStateOfType<AnimatedStackState>();
+    final AnimatedStackState? result =
+        context.findAncestorStateOfType<AnimatedStackState>();
     assert(() {
       if (result == null) {
         throw FlutterError.fromParts(<DiagnosticsNode>[
@@ -142,7 +145,8 @@ class AnimatedStack extends StatefulWidget {
 ///
 /// [AnimatedStack] item input handlers can also refer to their [AnimatedStackState]
 /// with the static [AnimatedStack.of] method.
-class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMixin<AnimatedStack> {
+class AnimatedStackState extends State<AnimatedStack>
+    with TickerProviderStateMixin<AnimatedStack> {
   final List<_ActiveItem> _incomingItems = <_ActiveItem>[];
   final List<_ActiveItem> _outgoingItems = <_ActiveItem>[];
   int _itemsCount = 0;
@@ -239,7 +243,9 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
     });
 
     controller.forward().then<void>((_) {
-      _removeActiveItemAt(_incomingItems, incomingItem.itemIndex)!.controller!.dispose();
+      _removeActiveItemAt(_incomingItems, incomingItem.itemIndex)!
+          .controller!
+          .dispose();
     });
   }
 
@@ -262,10 +268,12 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
     assert(itemIndex >= 0 && itemIndex < _itemsCount);
     assert(_activeItemAt(_outgoingItems, itemIndex) == null);
 
-    final _ActiveItem? incomingItem = _removeActiveItemAt(_incomingItems, itemIndex);
+    final _ActiveItem? incomingItem =
+        _removeActiveItemAt(_incomingItems, itemIndex);
     final AnimationController controller = incomingItem?.controller ??
         AnimationController(duration: duration, value: 1.0, vsync: this);
-    final _ActiveItem outgoingItem = _ActiveItem.outgoing(controller, itemIndex, builder);
+    final _ActiveItem outgoingItem =
+        _ActiveItem.outgoing(controller, itemIndex, builder);
     setState(() {
       _outgoingItems
         ..add(outgoingItem)
@@ -273,7 +281,9 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
     });
 
     controller.reverse().then<void>((void value) {
-      _removeActiveItemAt(_outgoingItems, outgoingItem.itemIndex)!.controller!.dispose();
+      _removeActiveItemAt(_outgoingItems, outgoingItem.itemIndex)!
+          .controller!
+          .dispose();
 
       // Decrement the incoming and outgoing item indices to account
       // for the removal.
@@ -298,7 +308,8 @@ class AnimatedStackState extends State<AnimatedStack> with TickerProviderStateMi
     }
 
     final _ActiveItem? incomingItem = _activeItemAt(_incomingItems, itemIndex);
-    final Animation<double> animation = incomingItem?.controller?.view ?? kAlwaysCompleteAnimation;
+    final Animation<double> animation =
+        incomingItem?.controller?.view ?? kAlwaysCompleteAnimation;
     return widget.itemBuilder(
       context,
       _itemIndexToIndex(itemIndex),
