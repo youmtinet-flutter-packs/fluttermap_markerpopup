@@ -24,24 +24,19 @@ class SimpleMapWithPopups extends StatelessWidget {
       options: MapOptions(
         zoom: 5.0,
         center: LatLng(44.421, 10.404),
-        onTap: (_, __) => _popupLayerController
-            .hideAllPopups(), // Hide popup when the map is tapped.
+        onTap: (_, __) => _popupLayerController.hideAllPopups(), // Hide popup when the map is tapped.
       ),
       children: [
-        TileLayerWidget(
-          options: TileLayerOptions(
-            urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
-          ),
+        TileLayer(
+          urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          subdomains: ['a', 'b', 'c'],
         ),
         PopupMarkerLayerWidget(
           options: PopupMarkerLayerOptions(
             popupController: _popupLayerController,
             markersData: _markers,
-            markerRotateAlignment:
-                PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
-            popupBuilder: (BuildContext context, MarkerData marker) =>
-                ExamplePopup(marker),
+            markerRotateAlignment: PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
+            popupBuilder: (BuildContext context, MarkerData marker) => ExamplePopup(marker),
           ),
         ),
       ],

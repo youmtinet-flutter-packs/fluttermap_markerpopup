@@ -21,29 +21,27 @@ class _PopupMarkerLayerWidgetState extends State<PopupMarkerLayerWidget> {
   @override
   void initState() {
     super.initState();
-    _popupController = widget.options.popupController == null
-        ? PopupControllerImpl()
-        : widget.options.popupController as PopupControllerImpl;
+    _popupController = widget.options.popupController == null ? PopupControllerImpl() : widget.options.popupController as PopupControllerImpl;
   }
 
   @override
   Widget build(BuildContext context) {
-    final mapState = flutter_map.MapState.maybeOf(context)!;
+    final mapState = flutter_map.FlutterMapState.maybeOf(context)!;
     return Stack(children: [
       MarkerLayer(
         widget.options,
         mapState,
-        mapState.onMoved,
+        null,
         _popupController,
       ),
       PopupLayer(
         mapState: mapState,
-        stream: mapState.onMoved,
+        // stream: mapState.onMoved,
         popupSnap: widget.options.popupSnap,
         popupBuilder: widget.options.popupBuilder,
         popupController: _popupController,
         popupAnimation: widget.options.popupAnimation,
-        markerRotate: widget.options.rotate ?? false,
+        markerRotate: widget.options.rotate,
         onPopupEvent: widget.options.onPopupEvent,
       ),
     ]);

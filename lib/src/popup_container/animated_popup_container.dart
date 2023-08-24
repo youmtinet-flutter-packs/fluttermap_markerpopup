@@ -18,11 +18,10 @@ class AnimatedPopupContainer extends StatefulWidget {
   final PopupControllerImpl popupController;
   final PopupBuilder popupBuilder;
   final PopupSnap snap;
-  final MapState mapState;
+  final FlutterMapState mapState;
   final PopupAnimation popupAnimation;
   final bool markerRotate;
-  final Function(PopupEvent event, List<MarkerData> selectedMarkers)?
-      onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
 
   const AnimatedPopupContainer({
     required this.mapState,
@@ -39,10 +38,9 @@ class AnimatedPopupContainer extends StatefulWidget {
   State<StatefulWidget> createState() => _AnimatedPopupContainerState();
 }
 
-class _AnimatedPopupContainerState extends State<AnimatedPopupContainer>
-    with PopupContainerMixin {
+class _AnimatedPopupContainerState extends State<AnimatedPopupContainer> with PopupContainerMixin {
   @override
-  MapState get mapState => widget.mapState;
+  FlutterMapState get mapState => widget.mapState;
 
   @override
   PopupControllerImpl get popupController => widget.popupController;
@@ -54,11 +52,9 @@ class _AnimatedPopupContainerState extends State<AnimatedPopupContainer>
   bool get markerRotate => widget.markerRotate;
 
   @override
-  Function(PopupEvent event, List<MarkerData> selectedMarkers)?
-      get onPopupEvent => widget.onPopupEvent;
+  Function(PopupEvent event, List<MarkerData> selectedMarkers)? get onPopupEvent => widget.onPopupEvent;
 
-  final GlobalKey<AnimatedStackState> _animatedStackKey =
-      GlobalKey<AnimatedStackState>();
+  final GlobalKey<AnimatedStackState> _animatedStackKey = GlobalKey<AnimatedStackState>();
 
   late AnimatedStackManager<MarkerWithKey> _animatedStackManager;
   late StreamSubscription<PopupEvent> _popupEventSubscription;
@@ -71,25 +67,21 @@ class _AnimatedPopupContainerState extends State<AnimatedPopupContainer>
 
     _animatedStackManager = AnimatedStackManager<MarkerWithKey>(
       animatedStackKey: _animatedStackKey,
-      removedItemBuilder: (marker, _, animation) =>
-          _buildPopup(marker, animation, allowTap: false),
+      removedItemBuilder: (marker, _, animation) => _buildPopup(marker, animation, allowTap: false),
       duration: widget.popupAnimation.duration,
       initialItems: popupController.selectedMarkersWithKeys,
     );
-    _popupEventSubscription = widget.popupController.streamController!.stream
-        .listen((PopupEvent popupEvent) => handleAction(popupEvent));
+    _popupEventSubscription = widget.popupController.streamController!.stream.listen((PopupEvent popupEvent) => handleAction(popupEvent));
   }
 
   @override
   void didUpdateWidget(covariant AnimatedPopupContainer oldWidget) {
     if (oldWidget.popupController != widget.popupController) {
       _popupEventSubscription.cancel();
-      _popupEventSubscription = widget.popupController.streamController!.stream
-          .listen((PopupEvent popupEvent) => handleAction(popupEvent));
+      _popupEventSubscription = widget.popupController.streamController!.stream.listen((PopupEvent popupEvent) => handleAction(popupEvent));
 
       _animatedStackManager.clear(duration: Duration.zero);
-      for (final selectedMarker
-          in widget.popupController.selectedMarkersWithKeys) {
+      for (final selectedMarker in widget.popupController.selectedMarkersWithKeys) {
         _animatedStackManager.insert(
           _animatedStackManager.length - 1,
           selectedMarker,
@@ -176,15 +168,13 @@ class _AnimatedPopupContainerState extends State<AnimatedPopupContainer>
     List<MarkerData> markersData, {
     required bool disableAnimation,
   }) {
-    _animatedStackManager.removeWhere(
-        (markerWithKey) => markersData.contains(markerWithKey.marker));
+    _animatedStackManager.removeWhere((markerWithKey) => markersData.contains(markerWithKey.marker));
   }
 
   @override
   void hideAllPopups({required bool disableAnimation}) {
     if (_animatedStackManager.isNotEmpty) {
-      _animatedStackManager.clear(
-          duration: disableAnimation ? Duration.zero : null);
+      _animatedStackManager.clear(duration: disableAnimation ? Duration.zero : null);
     }
   }
 }

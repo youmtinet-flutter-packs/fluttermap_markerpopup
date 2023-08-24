@@ -9,7 +9,7 @@ import 'popup_controller_impl.dart';
 
 class MarkerLayer extends StatefulWidget {
   final PopupMarkerLayerOptions layerOptions;
-  final MapState map;
+  final FlutterMapState map;
   final Stream<void>? stream;
   final PopupControllerImpl popupController;
 
@@ -25,8 +25,7 @@ class MarkerLayer extends StatefulWidget {
   State<MarkerLayer> createState() => _MarkerLayerState();
 }
 
-class _MarkerLayerState extends State<MarkerLayer>
-    with SingleTickerProviderStateMixin {
+class _MarkerLayerState extends State<MarkerLayer> with SingleTickerProviderStateMixin {
   var lastZoom = -1.0;
 
   /// List containing cached pixel positions of markers
@@ -59,8 +58,7 @@ class _MarkerLayerState extends State<MarkerLayer>
     super.didUpdateWidget(oldWidget);
     lastZoom = -1.0;
     _pxCache = generatePxCache();
-    _centerMarkerController.duration =
-        widget.layerOptions.markerCenterAnimation?.duration;
+    _centerMarkerController.duration = widget.layerOptions.markerCenterAnimation?.duration;
   }
 
   @override
@@ -76,16 +74,13 @@ class _MarkerLayerState extends State<MarkerLayer>
           var markerData = markers2[i];
 
           // Decide whether to use cached point or calculate it
-          var pxPoint = sameZoom
-              ? _pxCache[i]
-              : widget.map.project(markerData.marker.point);
+          var pxPoint = sameZoom ? _pxCache[i] : widget.map.project(markerData.marker.point);
           if (!sameZoom) {
             _pxCache[i] = pxPoint;
           }
 
-          final width = markerData.marker.width - markerData.marker.anchor.left;
-          final height =
-              markerData.marker.height - markerData.marker.anchor.top;
+          final width = markerData.marker.width - markerData.marker.width;
+          final height = markerData.marker.height - markerData.marker.height;
           var sw = CustomPoint(pxPoint.x + width, pxPoint.y - height);
           var ne = CustomPoint(pxPoint.x - width, pxPoint.y + height);
 
@@ -93,7 +88,11 @@ class _MarkerLayerState extends State<MarkerLayer>
             continue;
           }
 
-          final pos = pxPoint - widget.map.getPixelOrigin();
+          final pos = pxPoint -
+              widget.map.getNewPixelOrigin(
+                widget.map.center,
+                widget.map.zoom,
+              );
 
           final markerWithGestureDetector = GestureDetector(
             onLongPress: () {
@@ -119,11 +118,9 @@ class _MarkerLayerState extends State<MarkerLayer>
           final markerRotate = widget.layerOptions.rotate;
 
           Widget markerWidget;
-          if (markerData.marker.rotate ?? markerRotate ?? false) {
-            final markerRotateOrigin = markerData.marker.rotateOrigin ??
-                widget.layerOptions.rotateOrigin;
-            final markerRotateAlignment = markerData.marker.rotateAlignment ??
-                widget.layerOptions.rotateAlignment;
+          if (markerData.marker.rotate ?? markerRotate) {
+            final markerRotateOrigin = markerData.marker.rotateOrigin ?? widget.layerOptions.rotateOrigin;
+            final markerRotateAlignment = markerData.marker.rotateAlignment ?? widget.layerOptions.rotateAlignment;
 
             // Counter rotated marker to the map rotation
             markerWidget = Transform.rotate(

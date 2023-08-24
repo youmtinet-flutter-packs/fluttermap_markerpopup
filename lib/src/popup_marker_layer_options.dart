@@ -10,7 +10,7 @@ import 'package:longpress_popup/src/popup_snap.dart';
 import 'marker_center_animation.dart';
 import 'popup_event.dart';
 
-class PopupMarkerLayerOptions extends MarkerLayerOptions {
+class PopupMarkerLayerOptions extends MarkerLayer {
   /// Used to construct the popup.
   final PopupBuilder popupBuilder;
   final Function(MarkerData)? onTap;
@@ -32,10 +32,9 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
 
   final MarkerLongPressBehavior markerLongPressBehavior;
 
-  final Function(PopupEvent event, List<MarkerData> selectedMarkers)?
-      onPopupEvent;
+  final Function(PopupEvent event, List<MarkerData> selectedMarkers)? onPopupEvent;
 
-  List<MarkerData> markersData = const [];
+  final List<MarkerData> markersData;
   PopupMarkerLayerOptions({
     required this.popupBuilder,
     AlignmentGeometry? markerRotateAlignment,
@@ -44,20 +43,18 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
     bool? markerRotate = true,
     Stream<void>? rebuild,
     this.popupSnap = PopupSnap.markerTop,
-    this.markersData = const [],
     this.markerCenterAnimation,
     this.popupController,
     this.popupAnimation,
+    required this.markersData,
     this.onPopupEvent,
     this.onTap,
-  })  : markerLongPressBehavior = markerLongPressBehavior ??
-            MarkerLongPressBehavior.togglePopupAndHideRest(),
+  })  : markerLongPressBehavior = markerLongPressBehavior ?? MarkerLongPressBehavior.togglePopupAndHideRest(),
         super(
           markers: markersData.map((e) => e.marker).toList(),
-          rotate: markerRotate,
+          rotate: markerRotate ?? false,
           rotateAlignment: markerRotateAlignment,
           rotateOrigin: markerRotateOrigin,
-          rebuild: rebuild,
         );
 
   static AlignmentGeometry rotationAlignmentFor(AnchorAlign anchorAlign) {
@@ -70,8 +67,16 @@ class PopupMarkerLayerOptions extends MarkerLayerOptions {
         return Alignment.centerLeft;
       case AnchorAlign.bottom:
         return Alignment.topCenter;
+      case AnchorAlign.topLeft:
+        return Alignment.bottomRight;
+      case AnchorAlign.topRight:
+        return Alignment.bottomLeft;
+      case AnchorAlign.bottomLeft:
+        return Alignment.topRight;
+      case AnchorAlign.bottomRight:
+        return Alignment.topLeft;
       case AnchorAlign.center:
-      case AnchorAlign.none:
+      default:
         return Alignment.center;
     }
   }
