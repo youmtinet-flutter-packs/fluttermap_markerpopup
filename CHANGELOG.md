@@ -1,22 +1,55 @@
-## [1.5.5] - 10/09/22
+# Changelog
 
-* Last release.
-* migrate fluttermap 2.2.0
+All notable changes to this project will be documented in this file. The format is based on [Semantic Versioning](https://semver.org/).
 
-## [1.5.4] - 06/07/22
+## [2.0.0] - 2023-08-24
 
-* Stable release.
+### Added
+- New feature: [Describe the new feature or enhancement briefly]
+- Support for Flutter Map version 5.0.0
+- Updated LatLng2 to version 0.9.0
 
-## [1.5.3] - 06/07/22
+### Changed
+- [Describe notable changes or improvements in this release]
+- [Include any changes that might affect user behavior]
 
-* Last release.
-* Format dart codes.
-## [1.5.2] - 05/07/22
+### Deprecated
+- [List any deprecated features or functionalities]
 
-* mid release.
-## [1.5.1] - 05/07/22
+### Removed
+- [List any removed features or functionalities]
 
-* Middle release.
-## [1.5.0] - 05/07/22
+### Fixed
+- [List bug fixes or issues that have been resolved]
 
-* initial release.
+## [1.5.5] - 2022-09-10
+
+### Changed
+- Updated dependencies to use Flutter Map version 2.2.0
+
+## [1.5.4] - 2022-07-06
+
+### Added
+- Stable release
+
+## [1.5.3] - 2022-07-06
+
+### Changed
+- Format Dart code to improve readability and maintainability
+
+## [1.5.2] - 2022-07-05
+
+### Changed
+- [Include a brief description of changes or improvements]
+
+## [1.5.1] - 2022-07-05
+
+### Changed
+- [Include a brief description of changes or improvements]
+
+## [1.5.0] - 2022-07-05
+
+### Added
+- Initial release of the project
+
+
