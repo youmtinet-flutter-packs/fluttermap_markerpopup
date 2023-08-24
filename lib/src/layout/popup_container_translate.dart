@@ -38,8 +38,10 @@ abstract class PopupContainerTransform {
     final markerPoint = _markerPoint(mapState, marker);
 
     return Matrix4.translationValues(
-      PopupCalculations.mapRightToPointX(mapState, markerPoint) + PopupCalculations.centerOffsetX(marker),
-      PopupCalculations.mapCenterToPointY(mapState, markerPoint) + PopupCalculations.centerOffsetY(marker),
+      PopupCalculations.mapRightToPointX(mapState, markerPoint) +
+          PopupCalculations.centerOffsetX(marker),
+      PopupCalculations.mapCenterToPointY(mapState, markerPoint) +
+          PopupCalculations.centerOffsetY(marker),
       0.0,
     )
       ..rotateZ(-mapState.rotationRad)
@@ -73,8 +75,10 @@ abstract class PopupContainerTransform {
     final markerPoint = _markerPoint(mapState, marker);
 
     return Matrix4.translationValues(
-      PopupCalculations.mapCenterToPointX(mapState, markerPoint) + PopupCalculations.centerOffsetX(marker),
-      PopupCalculations.mapBottomToPointY(mapState, markerPoint) + PopupCalculations.centerOffsetY(marker),
+      PopupCalculations.mapCenterToPointX(mapState, markerPoint) +
+          PopupCalculations.centerOffsetX(marker),
+      PopupCalculations.mapBottomToPointY(mapState, markerPoint) +
+          PopupCalculations.centerOffsetY(marker),
       0.0,
     )
       ..rotateZ(-mapState.rotationRad)
@@ -109,8 +113,10 @@ abstract class PopupContainerTransform {
     final markerPoint = _markerPoint(mapState, marker);
 
     return Matrix4.translationValues(
-      PopupCalculations.mapLeftToPointX(mapState, markerPoint) + PopupCalculations.centerOffsetX(marker),
-      PopupCalculations.mapCenterToPointY(mapState, markerPoint) + PopupCalculations.centerOffsetY(marker),
+      PopupCalculations.mapLeftToPointX(mapState, markerPoint) +
+          PopupCalculations.centerOffsetX(marker),
+      PopupCalculations.mapCenterToPointY(mapState, markerPoint) +
+          PopupCalculations.centerOffsetY(marker),
       0.0,
     )
       ..rotateZ(-mapState.rotationRad)
@@ -144,8 +150,10 @@ abstract class PopupContainerTransform {
     final markerPoint = _markerPoint(mapState, marker);
 
     return Matrix4.translationValues(
-      PopupCalculations.mapCenterToPointX(mapState, markerPoint) + PopupCalculations.centerOffsetX(marker),
-      PopupCalculations.mapTopToPointY(mapState, markerPoint) + PopupCalculations.centerOffsetY(marker),
+      PopupCalculations.mapCenterToPointX(mapState, markerPoint) +
+          PopupCalculations.centerOffsetX(marker),
+      PopupCalculations.mapTopToPointY(mapState, markerPoint) +
+          PopupCalculations.centerOffsetY(marker),
       0.0,
     )
       ..rotateZ(-mapState.rotationRad)
@@ -180,13 +188,17 @@ abstract class PopupContainerTransform {
     final markerPoint = _markerPoint(mapState, marker);
 
     return Matrix4.translationValues(
-      PopupCalculations.mapCenterToPointX(mapState, markerPoint) + PopupCalculations.centerOffsetX(marker),
-      PopupCalculations.mapCenterToPointY(mapState, markerPoint) + PopupCalculations.centerOffsetY(marker),
+      PopupCalculations.mapCenterToPointX(mapState, markerPoint) +
+          PopupCalculations.centerOffsetX(marker),
+      PopupCalculations.mapCenterToPointY(mapState, markerPoint) +
+          PopupCalculations.centerOffsetY(marker),
       0.0,
     )..rotateZ(-mapState.rotationRad);
   }
 
-  static CustomPoint<num> _markerPoint(FlutterMapState mapState, MarkerData marker) {
-    return mapState.project(marker.marker.point) /* .multiplyBy(mapState.getZoomScale(mapState.zoom, mapState.zoom)) - mapState.getPixelOrigin() */;
+  static CustomPoint<num> _markerPoint(
+      FlutterMapState mapState, MarkerData marker) {
+    return mapState.project(marker.marker
+        .point) /* .multiplyBy(mapState.getZoomScale(mapState.zoom, mapState.zoom)) - mapState.getPixelOrigin() */;
   }
 }

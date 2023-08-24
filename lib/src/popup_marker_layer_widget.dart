@@ -21,7 +21,9 @@ class _PopupMarkerLayerWidgetState extends State<PopupMarkerLayerWidget> {
   @override
   void initState() {
     super.initState();
-    _popupController = widget.options.popupController == null ? PopupControllerImpl() : widget.options.popupController as PopupControllerImpl;
+    _popupController = widget.options.popupController == null
+        ? PopupControllerImpl()
+        : widget.options.popupController as PopupControllerImpl;
   }
 
   @override

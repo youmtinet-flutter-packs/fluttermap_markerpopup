@@ -54,7 +54,8 @@ class _MapPageState extends State<MapPage> {
                 DataMarker(MonumentMarker(
                   monument: Monument(
                     name: 'Eiffel Tower',
-                    imagePath: 'https://cdn.lifestyleasia.com/wp-content/uploads/2019/10/21224220/Winer-Parisienne.jpg',
+                    imagePath:
+                        'https://cdn.lifestyleasia.com/wp-content/uploads/2019/10/21224220/Winer-Parisienne.jpg',
                     lat: 48.857661,
                     long: 2.295135,
                   ),
@@ -113,7 +114,8 @@ class MonumentMarker extends Marker {
 }
 
 class MonumentMarkerPopup extends StatelessWidget {
-  const MonumentMarkerPopup({Key? key, required this.monument}) : super(key: key);
+  const MonumentMarkerPopup({Key? key, required this.monument})
+      : super(key: key);
   final Monument monument;
 
   @override
